@@ -160,17 +160,20 @@ When a request is made to /api/mood/stressed, request.params.mood will be "stres
 // });
 
 // main.js
-import { startMirageServer } from "./modules/model.js";
-import { renderPage } from "./modules/view.js";
-import { handleMoodClick } from "./modules/controller.js";
+import { startMirageServer,createModel } from "./modules/model.js";
+import { renderPage,createView } from "./modules/view.js";
+import { handleMoodClick,createController } from "./modules/controller.js";
 
 // Start Mirage API
 startMirageServer();
 
 // Load homepage
 renderPage("home");
+const model = createModel();
+const view = createView();
+createController(model, view);
 
-// Global event listener
+// event listener
 document.addEventListener("click", function (e) {
   const moodBtn = e.target.closest(".mood");
   const backBtn = e.target.closest("#back-btn");
@@ -184,4 +187,3 @@ document.addEventListener("click", function (e) {
     renderPage("home");
   }
 });
-

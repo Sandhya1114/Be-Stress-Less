@@ -1,4 +1,4 @@
-// modules/model.js
+
 import { createServer } from "miragejs";
 
 export function startMirageServer() {
@@ -36,4 +36,35 @@ export function startMirageServer() {
       });
     }
   });
+}
+
+//model for chart
+export function createModel() {
+  const tasks = [];
+
+  function addTask(desc, hours) {
+    const color = getRandomColor();
+    tasks.push({ desc, hours, color });
+  }
+
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+  }
+
+  function getTasks() {
+    return [...tasks];
+  }
+
+  function getRandomColor() {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return `rgba(${r}, ${g}, ${b}, 0.6)`;
+  }
+
+  return {
+    addTask,
+    deleteTask,
+    getTasks
+  };
 }
