@@ -11,26 +11,26 @@ export function handleMoodClick(mood) {
 
 
 //control for chart
-export function createController(model, view) {
-  view.bindForm(handleAddTask);
-  view.bindDelete(handleDeleteTask);
+// export function createController(model, view) {
+//   view.bindForm(handleAddTask);
+//   view.bindDelete(handleDeleteTask);
 
-  function handleAddTask(desc, hours) {
-    model.addTask(desc, hours);
-    updateView();
-  }
+//   function handleAddTask(desc, hours) {
+//     model.addTask(desc, hours);
+//     updateView();
+//   }
 
-  function handleDeleteTask(index) {
-    model.deleteTask(index);
-    updateView();
-  }
+//   function handleDeleteTask(index) {
+//     model.deleteTask(index);
+//     updateView();
+//   }
 
-  function updateView() {
-    const tasks = model.getTasks();
-    view.renderTasks(tasks);
-    view.updateChart(tasks);
-  }
+//   function updateView() {
+//     const tasks = model.getTasks();
+//     view.renderTasks(tasks);
+//     view.updateChart(tasks);
+//   }
 
-  // Initial render
-  updateView();
-}
+//   // Initial render
+//   updateView();
+// }

@@ -15,7 +15,8 @@ export function renderPage(type = "home", data = {}) {
         </div>
         <h1 class="Mainheading">Welcome to Stress-Less - Micro Self-Care Assistant</h1>
         <section id="mood-section" class="visible">
-          <h1>How are you feeling?</h1>
+        <div class="glowing-circle"></div>
+          <h1 clss="bothering">What's bothering you ?</h1>
           <div class="emoji-picker">
             <button class="mood" data-mood="stressed">😣<span> Stressed</span></button>
             <button class="mood" data-mood="anxious">😰<span> Anxious</span></button>
@@ -32,9 +33,7 @@ export function renderPage(type = "home", data = {}) {
         <section id="suggestion-section" class="visible">
           <button id="back-btn"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
           <h2 class="calming-activity">Try this calming activity</h2>
-          <div class="suggestion-box">
-            <p><span><i class="fa-regular fa-face-smile"></i> Tip :</span>${data.text}</p>
-          </div>
+          
           <div class="media">
             <div style="margin-bottom: 1rem;">
               <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
@@ -44,7 +43,13 @@ export function renderPage(type = "home", data = {}) {
               <h3><i class="fa-brands fa-youtube"></i> YouTube</h3>
               <iframe style="border-radius:12px" width="100%" height="515" src="https://www.youtube.com/embed/${data.youtube}" frameborder="0" allowfullscreen></iframe>
             </div>
+            <div class="suggestion-box">
+              <textarea id="output" rows="30" cols="120" class="styled-output" readonly>${data.text}</textarea>
+            </div>
           </div>
+          
+          
+          
           <div class="feedback">
             <h1><i class="fa-solid fa-comments"></i> Give your feedback</h1>
             <button id="helped">That Helped 😊</button>
@@ -73,103 +78,103 @@ export function renderPage(type = "home", data = {}) {
   
 
 
-  export function createView() {
-    const root = document.getElementById('Doughunt');
+  // export function createView() {
+  //   const root = document.getElementById('Doughunt');
   
-    root.innerHTML = `
-      <div style="display: flex; gap: 2rem; align-items: flex-start;">
-        <div id="main" style="flex: 2;">
-          <h2 class="Mindful">Mindful Hours State</h2>
-          <form id="inputForm">
-            <input type="text" id="desc" placeholder="Enter Mindful Hours description" required>
-            <input type="number" id="hours" placeholder="Enter hours" required min="0.1" step="0.1">
-             <button type="submit" class="add">Add</button>
-          </form>
-          <div id="taskList"></div>
-        </div>
-        <div id="sidebar" style="flex: 1;">
-          <h3 class="Mindful-Hours">Mindful Hours State Anaysis</h3>
-          <div style="width: 100%; max-width: 500px;">
-            <canvas id="doughnutChart"></canvas>
-          </div>
-        </div>
-      </div>
-    `;
+  //   root.innerHTML = `
+  //     <div style="display: flex; gap: 2rem; align-items: flex-start;">
+  //       <div id="main" style="flex: 2;">
+  //         <h2 class="Mindful">Mindful Hours State</h2>
+  //         <form id="inputForm">
+  //           <input type="text" id="desc" placeholder="Enter Mindful Hours description" required>
+  //           <input type="number" id="hours" placeholder="Enter hours" required min="0.1" step="0.1">
+  //            <button type="submit" class="add">Add</button>
+  //         </form>
+  //         <div id="taskList"></div>
+  //       </div>
+  //       <div id="sidebar" style="flex: 1;">
+  //         <h3 class="Mindful-Hours">Mindful Hours State Anaysis</h3>
+  //         <div style="width: 100%; max-width: 500px;">
+  //           <canvas id="doughnutChart"></canvas>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   `;
   
-    const form = document.getElementById('inputForm');
-    const descInput = document.getElementById('desc');
-    const hoursInput = document.getElementById('hours');
-    const taskListEl = document.getElementById('taskList');
-    const ctx = document.getElementById('doughnutChart').getContext('2d');
+  //   const form = document.getElementById('inputForm');
+  //   const descInput = document.getElementById('desc');
+  //   const hoursInput = document.getElementById('hours');
+  //   const taskListEl = document.getElementById('taskList');
+  //   const ctx = document.getElementById('doughnutChart').getContext('2d');
   
-    const chart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: [],
-        datasets: [{
-          label: 'Hours Spent',
-          data: [],
-          backgroundColor: [],
-          borderColor: '#fff',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'right' },
-          title: { display: true, text: '' }
-        }
-      }
-    });
+  //   const chart = new Chart(ctx, {
+  //     type: 'doughnut',
+  //     data: {
+  //       labels: [],
+  //       datasets: [{
+  //         label: 'Hours Spent',
+  //         data: [],
+  //         backgroundColor: [],
+  //         borderColor: '#fff',
+  //         borderWidth: 1
+  //       }]
+  //     },
+  //     options: {
+  //       responsive: true,
+  //       plugins: {
+  //         legend: { position: 'right' },
+  //         title: { display: true, text: '' }
+  //       }
+  //     }
+  //   });
   
-    function bindForm(handler) {
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const desc = descInput.value.trim();
-        const hours = parseFloat(hoursInput.value);
-        if (desc && !isNaN(hours) && hours > 0) {
-          handler(desc, hours);
-          descInput.value = '';
-          hoursInput.value = '';
-        }
-      });
-    }
+  //   function bindForm(handler) {
+  //     form.addEventListener('submit', e => {
+  //       e.preventDefault();
+  //       const desc = descInput.value.trim();
+  //       const hours = parseFloat(hoursInput.value);
+  //       if (desc && !isNaN(hours) && hours > 0) {
+  //         handler(desc, hours);
+  //         descInput.value = '';
+  //         hoursInput.value = '';
+  //       }
+  //     });
+  //   }
   
-    function bindDelete(handler) {
-      taskListEl.addEventListener('click', (e) => {
-        if (e.target.classList.contains('delete-btn')) {
-          const index = parseInt(e.target.dataset.index);
-          handler(index);
-        }
-      });
-    }
+  //   function bindDelete(handler) {
+  //     taskListEl.addEventListener('click', (e) => {
+  //       if (e.target.classList.contains('delete-btn')) {
+  //         const index = parseInt(e.target.dataset.index);
+  //         handler(index);
+  //       }
+  //     });
+  //   }
   
-    function renderTasks(tasks) {
-      taskListEl.innerHTML = '';
-      tasks.forEach((task, index) => {
-        const el = document.createElement('div');
-        el.className = 'task';
-        el.innerHTML = `
-          <span>${task.desc} - ${task.hours}h</span>
-          <button class="delete-btn" data-index="${index}">delete</button>
-        `;
-        taskListEl.appendChild(el);
-      });
-    }
+  //   function renderTasks(tasks) {
+  //     taskListEl.innerHTML = '';
+  //     tasks.forEach((task, index) => {
+  //       const el = document.createElement('div');
+  //       el.className = 'task';
+  //       el.innerHTML = `
+  //         <span>${task.desc} - ${task.hours}h</span>
+  //         <button class="delete-btn" data-index="${index}">delete</button>
+  //       `;
+  //       taskListEl.appendChild(el);
+  //     });
+  //   }
   
-    function updateChart(tasks) {
-      chart.data.labels = tasks.map(t => t.desc);
-      chart.data.datasets[0].data = tasks.map(t => t.hours);
-      chart.data.datasets[0].backgroundColor = tasks.map(t => t.color);
-      chart.update();
-    }
+  //   function updateChart(tasks) {
+  //     chart.data.labels = tasks.map(t => t.desc);
+  //     chart.data.datasets[0].data = tasks.map(t => t.hours);
+  //     chart.data.datasets[0].backgroundColor = tasks.map(t => t.color);
+  //     chart.update();
+  //   }
   
-    return {
-      bindForm,
-      bindDelete,
-      renderTasks,
-      updateChart
-    };
-  }
+  //   return {
+  //     bindForm,
+  //     bindDelete,
+  //     renderTasks,
+  //     updateChart
+  //   };
+  // }
   
