@@ -159,7 +159,7 @@ When a request is made to /api/mood/stressed, request.params.mood will be "stres
 //   }
 // });
 
-// main.js
+
 import { startMirageServer } from "./modules/model.js";
 import { renderPage} from "./modules/view.js";
 import { handleMoodClick } from "./modules/controller.js";
