@@ -165,20 +165,18 @@ import { renderPage} from "./modules/view.js";
 import { handleMoodClick } from "./modules/controller.js";
 
 
+
 // Start Mirage API
 startMirageServer();
 
 // Load homepage
 renderPage("home");
-// const model = createModel();
-// const view = createView();
-// createController(model, view);
+
 
 // event listener
 document.addEventListener("click", function (e) {
   const moodBtn = e.target.closest(".mood");
   const backBtn = e.target.closest("#back-btn");
-
   if (moodBtn) {
     const mood = moodBtn.dataset.mood;
     handleMoodClick(mood);

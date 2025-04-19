@@ -1,4 +1,5 @@
-
+import { fetchNewQuote } from "./controller.js";
+import { createTaskChartComponent } from "./taskChartComponent.js";
 
 export function renderPage(type = "home", data = {}) {
     const app = document.getElementById("app");
@@ -15,13 +16,12 @@ export function renderPage(type = "home", data = {}) {
         </div>
         <h1 class="Mainheading">Welcome to Stress-Less - Micro Self-Care Assistant</h1>
         <section id="mood-section" class="visible">
-        <div class="glowing-circle"></div>
-          <h1 clss="bothering">What's bothering you ?</h1>
+          <h1 clss="bothering"> how’s your inner sunshine?</h1>
           <div class="emoji-picker">
             <button class="mood" data-mood="stressed">😣<span> Stressed</span></button>
             <button class="mood" data-mood="anxious">😰<span> Anxious</span></button>
             <button class="mood" data-mood="tired">😴<span> Tired</span></button>
-            <button class="mood" data-mood="overwhelmed">😵<span> Overwhelmed</span></button>
+            <button class="mood" data-mood="overwhelmed">🌟<span> Joyful</span></button>
           </div>
         </section>
       `;
@@ -44,12 +44,43 @@ export function renderPage(type = "home", data = {}) {
               <iframe style="border-radius:12px" width="100%" height="515" src="https://www.youtube.com/embed/${data.youtube}" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="suggestion-box">
-              <textarea id="output" rows="30" cols="120" class="styled-output" readonly>${data.text}</textarea>
+             
+              <div id="quote">${data.text}</div>
+              <button id="new-quote-btn" class="new-quote-btn">Show Another Quote</button>
             </div>
+             <!-- Soothing Sound Box -->
+            <div class="soothing-sound-box">
+              <h2 class="sound-title">Soothing Nature Sounds</h2>
+              <p class="sound-description">
+                Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.
+              </p>
+              <audio id="soothing-sound" controls>
+                <source src="${data.audio}" type="audio/mpeg" />
+                Your browser does not support the audio element.
+              </audio>
+                <br>
+              <button id="play-sound" class="play-sound-btn">Play Sound</button>
+            </div>
+            <div id="breathing-component">
+            <h3 class="headingcln">Inhale Peace, Exhale Stress: A Breathing Journey</h3>
+        <div class="breath-container">
+            <div class="outer-circle">
+              <div class="inner-circle">
+                <p class="center-text">Inhale</p> <!-- This text will change -->
+              </div>
+            </div>
+            <p class="timer">One Minute Exercise Time Left: 60s</p>
+            <p class="instruction">Click Start</p>
+            <button class="btn start-btn">Start</button>
+            <button class="btn restart-btn" style="display: none;">Restart</button>
+          </div>
+        </div>
+
+
           </div>
           
           
-          
+          <div id="Doughunt""></div>
           <div class="feedback">
             <h1><i class="fa-solid fa-comments"></i> Give your feedback</h1>
             <button id="helped">That Helped 😊</button>
@@ -57,12 +88,133 @@ export function renderPage(type = "home", data = {}) {
           </div>
         </section>
       `;
-  
+
+      (function () {
+        const component = document.getElementById('breathing-component');
+        const innerCircle = component.querySelector('.inner-circle');
+        const instruction = component.querySelector('.instruction');
+        const centerText = component.querySelector('.center-text'); 
+        const timerDisplay = component.querySelector('.timer');
+      
+        const pattern = [
+          { text: 'Inhale', scale: 1, duration: 6000 },
+          { text: 'Hold', scale: 1, duration: 4000 },
+          { text: 'Exhale', scale: 0.4, duration: 7000 }
+        ];
+      
+        let timeoutIds = [];
+        let timerInterval;
+        let sessionTime = 60; 
+        let phaseCountdownId;
+      
+        function updateTimerDisplay(time) {
+          timerDisplay.textContent = `Time Left: ${time}s`;
+        }
+      
+        // Run through each phase (Inhale, Hold, Exhale)
+        function runPhase(index = 0) {
+          const phase = pattern[index];
+          const seconds = phase.duration / 1000;
+          let count = seconds;
+      
+          // Update circle size (animation)
+          innerCircle.style.transitionDuration = `${seconds}s`;
+          innerCircle.style.transform = `scale(${phase.scale})`;
+      
+          // Show the text in the center
+          centerText.style.display = 'block';
+          centerText.textContent = `${phase.text}: ${count}`;
+      
+          // Per-second countdown text
+          phaseCountdownId = setInterval(() => {
+            count--;
+            if (count > 0) {
+              centerText.textContent = `${phase.text}: ${count}`;
+            } else {
+              clearInterval(phaseCountdownId);
+              // Move to next phase or restart pattern
+              const nextIndex = (index + 1) % pattern.length;
+              runPhase(nextIndex);
+            }
+          }, 1000);
+        }
+        createTaskChartComponent("Doughunt");
+        // Start the breathing exercise
+        function startBreathing() {
+          sessionTime = 60;
+          updateTimerDisplay(sessionTime);
+          component.querySelector('.start-btn').style.display = 'none';
+          component.querySelector('.restart-btn').style.display = 'inline-block';
+      
+          // Initially hide the center text and reset circle size
+          centerText.style.display = 'none'; 
+          innerCircle.style.transform = 'scale(0.4)'; 
+      
+          // Start breathing after a small delay
+          setTimeout(() => {
+            runPhase();
+          }, 1000);
+      
+          // Global session timer
+          timerInterval = setInterval(() => {
+            sessionTime--;
+            updateTimerDisplay(sessionTime);
+            if (sessionTime <= 0) {
+              stopBreathing();
+            }
+          }, 1000);
+        }
+      
+        // Stop the breathing exercise
+        function stopBreathing() {
+          timeoutIds.forEach(clearTimeout);
+          clearInterval(timerInterval);
+          clearInterval(phaseCountdownId);
+          instruction.textContent = 'Session Complete';
+          timerDisplay.textContent = 'Time Left: 0s';
+          innerCircle.style.transitionDuration = '0.3s';
+          innerCircle.style.transform = 'scale(0.4)';
+          centerText.style.display = 'none';
+          component.querySelector('.start-btn').style.display = 'inline-block';
+          component.querySelector('.restart-btn').style.display = 'none';
+        }
+      
+        // Restart the breathing exercise
+        function restartBreathing() {
+          stopBreathing();
+          instruction.textContent = 'Click Start';
+          timerDisplay.textContent = 'Time Left: 60s';
+          centerText.style.display = 'none'; 
+          innerCircle.style.transform = 'scale(0.4)'; 
+        }
+      
+        // Event Delegation
+        component.addEventListener('click', (e) => {
+          if (e.target.matches('.start-btn')) {
+            startBreathing();
+          } else if (e.target.matches('.restart-btn')) {
+            restartBreathing();
+          }
+        });
+      })();
+      
+              
+      
+      document.getElementById("play-sound").addEventListener("click", function () {
+        const audio = document.getElementById("soothing-sound");
+        if (audio) audio.play();
+      });
+      
+      document.getElementById("new-quote-btn").addEventListener("click", function () {
+        fetchNewQuote(data.mood);
+      });
+
       document.querySelector(".feedback").addEventListener("click", (e) => {
         if (e.target.tagName === "BUTTON") {
           handleFeedback(e.target.id);
         }
       });
+
   
       function handleFeedback(type) {
         const feedbackContainer = document.querySelector(".feedback");
@@ -75,106 +227,3 @@ export function renderPage(type = "home", data = {}) {
       }
     }
   }
-  
-
-
-  // export function createView() {
-  //   const root = document.getElementById('Doughunt');
-  
-  //   root.innerHTML = `
-  //     <div style="display: flex; gap: 2rem; align-items: flex-start;">
-  //       <div id="main" style="flex: 2;">
-  //         <h2 class="Mindful">Mindful Hours State</h2>
-  //         <form id="inputForm">
-  //           <input type="text" id="desc" placeholder="Enter Mindful Hours description" required>
-  //           <input type="number" id="hours" placeholder="Enter hours" required min="0.1" step="0.1">
-  //            <button type="submit" class="add">Add</button>
-  //         </form>
-  //         <div id="taskList"></div>
-  //       </div>
-  //       <div id="sidebar" style="flex: 1;">
-  //         <h3 class="Mindful-Hours">Mindful Hours State Anaysis</h3>
-  //         <div style="width: 100%; max-width: 500px;">
-  //           <canvas id="doughnutChart"></canvas>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   `;
-  
-  //   const form = document.getElementById('inputForm');
-  //   const descInput = document.getElementById('desc');
-  //   const hoursInput = document.getElementById('hours');
-  //   const taskListEl = document.getElementById('taskList');
-  //   const ctx = document.getElementById('doughnutChart').getContext('2d');
-  
-  //   const chart = new Chart(ctx, {
-  //     type: 'doughnut',
-  //     data: {
-  //       labels: [],
-  //       datasets: [{
-  //         label: 'Hours Spent',
-  //         data: [],
-  //         backgroundColor: [],
-  //         borderColor: '#fff',
-  //         borderWidth: 1
-  //       }]
-  //     },
-  //     options: {
-  //       responsive: true,
-  //       plugins: {
-  //         legend: { position: 'right' },
-  //         title: { display: true, text: '' }
-  //       }
-  //     }
-  //   });
-  
-  //   function bindForm(handler) {
-  //     form.addEventListener('submit', e => {
-  //       e.preventDefault();
-  //       const desc = descInput.value.trim();
-  //       const hours = parseFloat(hoursInput.value);
-  //       if (desc && !isNaN(hours) && hours > 0) {
-  //         handler(desc, hours);
-  //         descInput.value = '';
-  //         hoursInput.value = '';
-  //       }
-  //     });
-  //   }
-  
-  //   function bindDelete(handler) {
-  //     taskListEl.addEventListener('click', (e) => {
-  //       if (e.target.classList.contains('delete-btn')) {
-  //         const index = parseInt(e.target.dataset.index);
-  //         handler(index);
-  //       }
-  //     });
-  //   }
-  
-  //   function renderTasks(tasks) {
-  //     taskListEl.innerHTML = '';
-  //     tasks.forEach((task, index) => {
-  //       const el = document.createElement('div');
-  //       el.className = 'task';
-  //       el.innerHTML = `
-  //         <span>${task.desc} - ${task.hours}h</span>
-  //         <button class="delete-btn" data-index="${index}">delete</button>
-  //       `;
-  //       taskListEl.appendChild(el);
-  //     });
-  //   }
-  
-  //   function updateChart(tasks) {
-  //     chart.data.labels = tasks.map(t => t.desc);
-  //     chart.data.datasets[0].data = tasks.map(t => t.hours);
-  //     chart.data.datasets[0].backgroundColor = tasks.map(t => t.color);
-  //     chart.update();
-  //   }
-  
-  //   return {
-  //     bindForm,
-  //     bindDelete,
-  //     renderTasks,
-  //     updateChart
-  //   };
-  // }
-  
