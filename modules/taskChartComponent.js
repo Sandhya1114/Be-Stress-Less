@@ -22,9 +22,9 @@ export function createTaskChartComponent(containerId) {
       }
   
       function getRandomColor() {
-        const r = Math.floor(Math.random() * 255);
-        const g = Math.floor(Math.random() * 255);
-        const b = Math.floor(Math.random() * 255);
+        const r = Math.floor(Math.random() * 255+ 75);
+        const g = Math.floor(Math.random() * 255+ 75);
+        const b = Math.floor(Math.random() * 255+ 75);
         return `rgba(${r}, ${g}, ${b}, 0.6)`;
       }
   
@@ -35,7 +35,7 @@ export function createTaskChartComponent(containerId) {
       };
     })();
   
-    // ========= VIEW =========
+   
     function createView() {
         
        container.innerHTML = `
@@ -49,7 +49,8 @@ export function createTaskChartComponent(containerId) {
       <button type="submit">Add Happy Time</button>
     </form>
     <div class="task-layout">
-      <ul id="task-list"></ul>
+      <ul id="task-list">
+     </ul>
       <canvas id="task-chart"></canvas>
     </div>
   </div>
@@ -119,7 +120,11 @@ export function createTaskChartComponent(containerId) {
       
   
    
-    function createController(model, view) {
+      function createController(model, view) {
+        
+        model.addTask("Meet Friends", 1);
+        model.addTask("Did Exercise", 2);
+      
         view.bindEvents({
           onAdd: handleAddTask,
           onDelete: handleDeleteTask

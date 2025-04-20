@@ -7,12 +7,15 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   /* background: linear-gradient(135deg, #a8edea, #fed6e3); */
-  color:#DDDDDD;
+  color:#0B0D13;
   height: 100vh;
   /* background: #56DAE3;
  background: linear-gradient(90deg, rgba(86, 218, 227, 1) 0%, rgba(159, 164, 219, 1) 45%, rgba(244, 113, 181, 1) 100%); */
- background: #0B0D13;
+ /* background: #0B0D13;
 background: linear-gradient(90deg, rgba(11, 13, 19, 1) 0%, rgba(18, 25, 34, 1) 43%, rgba(21, 29, 39, 1) 61%, rgba(10, 13, 18, 1) 100%);
+background-image: url("https://lindaislinda.com/static/media/image.ca311e684596bffeb7f5.png"); */
+background: #CECBFE;
+background: linear-gradient(90deg, rgba(206, 203, 254, 1) 0%, rgba(183, 177, 254, 1) 10%, rgba(191, 186, 255, 1) 30%, rgba(235, 190, 246, 1) 56%, rgba(242, 204, 254, 1) 100%);
   
 }
 .left .logo{
@@ -30,7 +33,7 @@ background: linear-gradient(90deg, rgba(11, 13, 19, 1) 0%, rgba(18, 25, 34, 1) 4
 
 .mainContainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
  
   background-color: rgba(0, 0, 0, 0.23);
   height: 10vh;
@@ -56,8 +59,8 @@ background: linear-gradient(90deg, rgba(11, 13, 19, 1) 0%, rgba(18, 25, 34, 1) 4
 }
 .Mainheading{
   text-align: center;
-  margin-top: 30vh;
-  margin-bottom: 10vh;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
 }
 
 section {
@@ -66,12 +69,14 @@ section {
   align-items: center;
   text-align: center;
   padding: 1rem;
+  margin-top: 5vh;
 }
 
 section:not(.hidden) {
   display: flex;
 }
 .mood-section{
+  background-image: url("https://png.pngtree.com/png-clipart/20230927/original/pngtree-mental-health-meditation-illustration-png-image_13147768.png");
   background: linear-gradient(135deg, #a8edea, #fed6e3); 
   padding-top: 0px;
 }
@@ -166,12 +171,12 @@ section:not(.hidden) {
 }
 
 .feedback button#helped {
-  background-color: #cfab07;
+  background-color: #B8B3FD;
   color: white;
 }
 
 .feedback button#not-helped {
-  background-color: #a2c80b;
+  background-color: #fed6e3;
   color: white;
 }
 
@@ -230,6 +235,13 @@ section:not(.hidden) {
   text-align: center;
   margin: 2rem auto;
   max-width: 1400px;
+  /* background-image: url("https://wallpaperaccess.com/full/1761731.jpg");
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  background-position: center;  */
+  width: 100%;
+  background-color: #B8B3FD;
+ 
 }
 
 #quote {
@@ -239,6 +251,7 @@ section:not(.hidden) {
   font-style: italic;
   line-height: 1.6;
   margin-bottom: 20px;
+ 
 }
 
 .new-quote-btn {
@@ -278,6 +291,7 @@ section:not(.hidden) {
   text-align: center;
   margin-top: 20px;
   border-left: 5px solid #62a1c9;
+  background-image: url("https://th.bing.com/th/id/OIP.HxhVsHcfLV4fX9mCy0jX1gHaLH?w=204&h=306&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2");
 }
 
 .sound-title {
@@ -294,17 +308,18 @@ section:not(.hidden) {
 
 .play-sound-btn {
   padding: 12px 30px;
-  background-color: #8c6c04;
+  background-color:#0B0D13;
   color: #fff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1.1rem;
   margin-top: 20px;
+  
 }
 
 .play-sound-btn:hover {
-  background-color: #8c6c04;
+  background-color: #EFC4FC;
 }
 #breathing-component .breath-container {
   text-align: center;
@@ -317,6 +332,9 @@ section:not(.hidden) {
   margin-top: 5vh;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   font-family: Arial, sans-serif;
+  background-color: #EFC4FC;
+  background: #56DAE3;
+  background: linear-gradient(90deg, rgba(86, 218, 227, 0.521) 0%, rgba(159, 164, 219, 1) 45%, rgba(244, 113, 181, 0.641) 100%);
 }
 
 .outer-circle {
@@ -358,7 +376,7 @@ section:not(.hidden) {
 .timer {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #94a3b8;
+  color: #0B0D13;
 }
 
 .btn {
@@ -390,14 +408,14 @@ section:not(.hidden) {
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f9f9f9;
+  background-color: #ffaacc3e;
 }
 
 #task-form input,
 #task-form button {
   padding: 0.8rem;
   margin: 0.5rem 0;
-  border-radius: 4px;
+  border-radius: 14px;
   border: 1px solid #ddd;
 }
 
@@ -432,7 +450,7 @@ section:not(.hidden) {
   margin-bottom: 0.5rem;
   background-color: #fafafa;
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 23px;
 }
 
 #task-list button {
@@ -452,20 +470,21 @@ section:not(.hidden) {
 #task-chart {
   max-width: 100%;
   margin-top: 2rem;
-  border: 1px solid #ddd;
+  
   border-radius: 8px;
 }
 
 #task-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 
 #task-container h2 {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 2rem;
+  margin-top: 5vh;
 }
 .LoveYourSelf{
   font-style: italic;
@@ -473,12 +492,149 @@ section:not(.hidden) {
   margin: 20px 0;
 
 }
-@media (max-width: 480px) {
-  section {
-    display: none;
+
+/* Responsive for tablets (portrait & small laptops) */
+@media (max-width: 1024px) {
+  .mainContainer {
     flex-direction: column;
+    height: auto;
+    padding: 10px;
     align-items: center;
+  }
+
+  .left .logo {
+    font-size: 1.5rem;
     text-align: center;
+  }
+
+  .ChoiseSection {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .mood {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+  }
+
+  .emoji-picker {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .media {
+    width: 100%;
+  }
+
+  #back-btn {
+    left: 20px;
+    top: 20px;
+  }
+
+  .feedback h1 {
+    font-size: 1.5rem;
+  }
+
+  .feedback button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive for mobile phones */
+@media (max-width: 600px) {
+  .mainContainer {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .left .logo {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .Mainheading {
+    font-size: 1.2rem;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    padding: 0 10px;
+  }
+
+  .ChoiseSection {
+    flex-direction: column;
+    padding: 10px;
+    height: auto;
+  }
+
+  .mood {
+    font-size: 1.2rem;
+    padding: 0.6rem;
+  }
+
+  .emoji-picker {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .suggestion-box,
+  .soothing-sound-box,
+  .breath-container {
+    max-width: 862px;
     padding: 1rem;
   }
+
+  .outer-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .inner-circle {
+    width: 70%;
+    height: 70%;
+  }
+
+  .center-text,
+  .instruction {
+    font-size: 1.2rem;
+  }
+
+
+  #task-form {
+    padding: 0.5rem;
+  }
+
+  #task-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #task-list button {
+    margin-top: -18px;
+    align-self: flex-end;
+  }
+
+  .feedback button {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .LoveYourSelf {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  #back-btn {
+    
+      top: 19px;
+      left: 23px;
+  }
+  .feedback {
+    margin-top: 4vh;
+  }
+  
 }

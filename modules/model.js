@@ -23,25 +23,25 @@ export  function startMirageServer() {
         const moodData = {
           stressed: {
             spotify: "playlist/1dD2RAirtwoQQwno1mglZH?utm_source=generator",
-            youtube: "MIr3RsUWrdo",
+            youtube: "jh2LJVDtGIY?si=RSk-P0uUgBJhGW1y",
             text:getRandomQuote("stressed"),
             audio: "/audioSounds/avala-mountain-scenery-245994.mp3"
           },
           anxious: {
             spotify: "playlist/0cj48sijCRDJ3Hatx1k1vJ?utm_source=generator",
-            youtube: "ZToicYcHIOU",
+            youtube: "oS6KlpzDNS0?si=ppK-rsctWanBtq4K",
             text:getRandomQuote("anxious"),
             audio: "/audioSounds/birds-chirping-75156.mp3"
           },
           tired: {
             spotify: "album/2d6cNiDXbrKdFcn8ujJxo3?utm_source=generator",
-            youtube: "aNXKjGFUlMs",
+            youtube: "videoseries?si=imkmnoArDglpXY1H&amp;list=PLzKILxYC79RDspOFfHUselpBLOVEOJO_T",
             text:getRandomQuote("tired"),
             audio: "/audioSounds/raindrop-146855.mp3"
           },
           overwhelmed: {
             spotify: "playlist/2f5GQGww9n40kQMm3X9Bi3?utm_source=generator",
-            youtube: "inpok4MKVLM",
+            youtube: "videoseries?si=3HuUPm0VuX6BTvi_&amp;list=PLXtFFw28vRpasM_9L6DNmxrq9NuSjmOfE",
             text:getRandomQuote("overwhelmed"),
             audio: "/audioSounds/forestbirds-319791.mp3"
           }

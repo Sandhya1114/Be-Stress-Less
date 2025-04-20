@@ -8,13 +8,18 @@ export function renderPage(type = "home", data = {}) {
       app.innerHTML = `
         <div class="mainContainer">
           <div class="left"><h1 class="logo">Be Stress-Less</h1></div>
-          <div class="right">
-            <button><i class="fa-regular fa-bell"></i> Notification</button>
-            <button> <i class="fa fa-circle-user"></i> Login</button>
-            <button><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-          </div>
         </div>
+        
         <h1 class="Mainheading">Welcome to Stress-Less - Micro Self-Care Assistant</h1>
+        <div style="background-image: url('https://png.pngtree.com/png-clipart/20230927/original/pngtree-mental-health-meditation-illustration-png-image_13147790.png'); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center; 
+            width: 100%; 
+            height: 382px;}">
+</div>
+
+
         <section id="mood-section" class="visible">
           <h1 clss="bothering"> how’s your inner sunshine?</h1>
           <div class="emoji-picker">
@@ -31,7 +36,7 @@ export function renderPage(type = "home", data = {}) {
     if (type === "suggestion") {
       app.innerHTML = `
         <section id="suggestion-section" class="visible">
-          <button id="back-btn"><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+          <button id="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
           <h2 class="calming-activity">Try this calming activity</h2>
           
           <div class="media">
