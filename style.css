@@ -3,21 +3,75 @@
   margin: 0;
   box-sizing: border-box;
 }
+:root {
+  --primary-text:#0B0D13;
+  --soft-pink: #fed6e3;
+  --gradient-start: #a8edea;
+  --gradient-mid: #fed6e3;
+  --gradient-vivid: #56DAE3;
+  --gradient-purple: #B8B3FD;
+  --gradient-purple-light: #CECBFE;
+  --gradient-purple-mid: #B7B1FE;
+  --gradient-purple-deep: #BFBAFF;
+  --gradient-pink: #EBC0F6;
+  --gradient-pink-light: #F2CCFE;
+  --btn-hover: #8c6c04;
+  --task-bg: #ffaacc3e;
+  --delete-btn: #c56088;
+  --white: #ffffff;
+  --light-grey: #eef3f9;
+  --box-shadow: rgba(0, 0, 0, 0.1);
+  --shadow-light: rgba(248, 244, 244, 0.5);
+}
+
+.header {
+  display: flex;
+  justify-content:space-between;
+  width: 95%;
+  margin: 50px auto;
+  border: 1px solid rgb(191, 210, 255);
+  border-radius: 20px;
+  padding:7px 2px 2px 10px;
+}
+
+.left-header {
+  font-size: 30px;
+  font-weight: 200;
+  background: -webkit-linear-gradient(#df0ec3, rgb( 0, 62, 203));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+.left-header img{
+  border-radius: 20px;
+}
+
+.header a {
+  text-decoration: none;
+  padding: 10px;
+  color: var(--primary-text);
+  font-size: 20px;
+}
+
+.right-header a:active {
+  color: rgb(37, 37, 137);
+}
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   /* background: linear-gradient(135deg, #a8edea, #fed6e3); */
-  color:#0B0D13;
+  
   height: 100vh;
   /* background: #56DAE3;
  background: linear-gradient(90deg, rgba(86, 218, 227, 1) 0%, rgba(159, 164, 219, 1) 45%, rgba(244, 113, 181, 1) 100%); */
- /* background: #0B0D13;
+ /* background: var(--primary-text);;
 background: linear-gradient(90deg, rgba(11, 13, 19, 1) 0%, rgba(18, 25, 34, 1) 43%, rgba(21, 29, 39, 1) 61%, rgba(10, 13, 18, 1) 100%);
 background-image: url("https://lindaislinda.com/static/media/image.ca311e684596bffeb7f5.png"); */
 background: #CECBFE;
 background: linear-gradient(90deg, rgba(206, 203, 254, 1) 0%, rgba(183, 177, 254, 1) 10%, rgba(191, 186, 255, 1) 30%, rgba(235, 190, 246, 1) 56%, rgba(242, 204, 254, 1) 100%);
-  
+color: var(--primary-text);
 }
+
 .left .logo{
   background-color: linear-gradient(135deg, #a8edea, #fed6e3); 
   /* color: #fff; */
@@ -171,8 +225,8 @@ section:not(.hidden) {
 }
 
 .feedback button#helped {
-  background-color: #B8B3FD;
-  color: white;
+  background-color: var(--gradient-purple);
+  color: var(--white);
 }
 
 .feedback button#not-helped {
@@ -220,7 +274,7 @@ section:not(.hidden) {
   margin-top: 20px;
 }
 .delete-btn{
-  background-color:#c56088;
+  background-color: var(--delete-btn);
   margin-left: 60px;
 }
 .Mindful{
@@ -255,7 +309,7 @@ section:not(.hidden) {
 }
 
 .new-quote-btn {
-  background-color:#0B0D13;
+  background-color:var(--primary-text);;
   color: #fff;
   padding: 12px 24px;
   font-size: 1rem;
@@ -268,7 +322,7 @@ section:not(.hidden) {
 }
 
 .new-quote-btn:hover {
-  background-color: #8c6c04;
+  background-color: var(--primary-text);;
   transform: translateY(-2px);
 }
 
@@ -297,18 +351,18 @@ section:not(.hidden) {
 .sound-title {
   font-size: 1.8rem;
   font-weight: 600;
-  color: #0B0D13;
+  color: var(--primary-text);;
 }
 
 .sound-description {
   font-size: 1.1rem;
-  color: #0B0D13;
+  color: var(--primary-text);;
   margin: 10px 0;
 }
 
 .play-sound-btn {
   padding: 12px 30px;
-  background-color:#0B0D13;
+  background-color:var(--primary-text);;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -325,7 +379,7 @@ section:not(.hidden) {
   text-align: center;
   padding: 20px;
   background:#fff;
-  color:#0B0D13;
+  color:var(--primary-text);;
   border-radius: 10px;
   max-width:1200px;
   margin: auto;
@@ -340,7 +394,7 @@ section:not(.hidden) {
 .outer-circle {
   width: 200px;
   height: 200px;
-  border: 4px solid #0B0D13;
+  border: 4px solid var(--primary-text);;
   border-radius: 50%;
   margin: 20px auto;
   display: flex;
@@ -352,7 +406,7 @@ section:not(.hidden) {
 .inner-circle {
   width: 80%;
   height: 80%;
-  background-color: #0B0D13;
+  background-color: var(--primary-text);;
   border-radius: 50%;
   transition: transform ease-in-out;
   position: relative;
@@ -376,7 +430,7 @@ section:not(.hidden) {
 .timer {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #0B0D13;
+  color: var(--primary-text);;
 }
 
 .btn {
@@ -385,14 +439,14 @@ section:not(.hidden) {
   font-size: 1rem;
   border: none;
   border-radius: 5px;
-  background-color: #0B0D13;
+  background-color: var(--primary-text);;
   color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #0B0D13;
+  background-color: var(--primary-text);;
 }
 
 
@@ -424,7 +478,7 @@ section:not(.hidden) {
 }
 
 #task-form button {
-  background-color:#0B0D13;
+  background-color:var(--primary-text);;
   color: white;
   border: none;
   cursor: pointer;
@@ -432,7 +486,7 @@ section:not(.hidden) {
 }
 
 #task-form button:hover {
-  background-color:#0B0D13;
+  background-color:var(--primary-text);;
 }
 
 #task-list {
@@ -442,7 +496,7 @@ section:not(.hidden) {
 }
 
 #task-list li {
-  color: #0B0D13;
+  color: var(--primary-text);;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -454,7 +508,7 @@ section:not(.hidden) {
 }
 
 #task-list button {
-  background-color: #0B0D13;
+  background-color: var(--primary-text);;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -464,7 +518,7 @@ section:not(.hidden) {
 }
 
 #task-list button:hover {
-  background-color: #0B0D13;
+  background-color: var(--primary-text);;
 }
 
 #task-chart {
