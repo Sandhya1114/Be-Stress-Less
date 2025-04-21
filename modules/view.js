@@ -19,7 +19,7 @@ export function renderPage(type = "home", data = {}) {
             background-position: center; 
             width: 100%; 
             height: 382px;}">
-</div>
+        </div>
 
 
         <section id="mood-section" class="visible">
@@ -42,90 +42,15 @@ export function renderPage(type = "home", data = {}) {
       const showYoutube = ["tired", "overwhelmed", "anxious", "stressed"].includes(mood);
       const showQuote = true; // Always 
       const showSound = ["anxious", "tired"].includes(mood);
-      const showBreathing = ["anxious", "stressed"].includes(mood);
+      const showBreathing = ["anxious", "stressed","tired"].includes(mood);
       const ASMR= [ "overwhelmed","tired"].includes(mood);
     
-      // app.innerHTML = `
-      //   <section id="suggestion-section" class="visible">
-      //     <button id="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
-      //     <h2 class="calming-activity">Try this calming activity</h2>
-    
-      //     <div class="media">
-      //       ${showSpotify ? `
-      //         <div style="margin-bottom: 1rem;">
-      //           <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
-      //           <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
-      //         </div>
-      //       ` : ''}
-    
-      //       ${showYoutube ? `
-      //         <div>
-      //           <h3><i class="fa-brands fa-youtube"></i> YouTube</h3>
-      //           <iframe style="border-radius:12px" width="100%" height="515" src="https://www.youtube.com/embed/${data.youtube}" frameborder="0" allowfullscreen></iframe>
-      //           ${ASMR ? `
-      //           <h3><i class="fa-brands fa-youtube"></i>  Try Chalk Crush YouTube Video</h3>
-      //           <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/jE7OtdqusPE?si=UXYXjy_TmMEsEXTu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      //           `:''}
-      //         </div>
-      //       ` : ''}
-    
-      //       ${showQuote ? `
-      //         <div class="suggestion-box">
-      //           <div id="quote">${data.text}</div>
-      //           <button id="new-quote-btn" class="new-quote-btn">Show Another Quote</button>
-                
-      //         </div>
-      //       ` : ''}
-    
-      //       ${showSound ? `
-      //         <div class="soothing-sound-box">
-      //           <h2 class="sound-title">Soothing Nature Sounds</h2>
-      //           <p class="sound-description">
-      //             Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.
-      //           </p>
-      //           <audio id="soothing-sound" controls>
-      //             <source src="${data.audio}" type="audio/mpeg" />
-      //             Your browser does not support the audio element.
-      //           </audio>
-      //           <br>
-      //           <button id="play-sound" class="play-sound-btn">Play Sound</button>
-                
-      //         </div>
-               
-      //       ` : ''}
-    
-      //       ${showBreathing ? `
-      //         <div id="breathing-component">
-      //           <h3 class="headingcln">Inhale Peace, Exhale Stress: A Breathing Journey</h3>
-      //           <div class="breath-container">
-      //             <div class="outer-circle">
-      //               <div class="inner-circle">
-      //                 <p class="center-text">Inhale</p>
-      //               </div>
-      //             </div>
-      //             <p class="timer">One Minute Exercise Time Left: 60s</p>
-      //             <p class="instruction">Click Start</p>
-      //             <button class="btn start-btn">Start</button>
-      //             <button class="btn restart-btn" style="display: none;">Restart</button>
-      //           </div>
-      //         </div>
-      //       ` : ''}
-      //     </div>
-    
-      //   <div id="Doughunt"></div>
-    
-      //   <div class="feedback">
-      //     <h1><i class="fa-solid fa-comments"></i> Give your feedback</h1>
-      //     <button id="helped">That Helped 😊</button>
-      //     <button id="not-helped">Didn't Help 😕</button>
-      //   </div>
-      //   </section>
-      // `;
+     
       const spotifyEmbed = showSpotify ? `
-    <div style="margin-bottom: 1rem;">
-      <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
-    </div>` : '';
+      <div style="margin-bottom: 1rem;">
+        <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
+      </div>` : '';
 
   const youtubeEmbed = showYoutube ? `
     <div>
@@ -172,7 +97,7 @@ export function renderPage(type = "home", data = {}) {
       </div>
     </div>` : '';
 
-  // Combine all parts into the final HTML
+  // all suggestion
   app.innerHTML = `
     <section id="suggestion-section" class="visible">
       <button id="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
@@ -195,7 +120,7 @@ export function renderPage(type = "home", data = {}) {
       </div>
     </section>
   `;
-    
+    createTaskChartComponent("Doughunt");    
       (function () {
         const component = document.getElementById('breathing-component');
         const innerCircle = component.querySelector('.inner-circle');
@@ -305,7 +230,7 @@ export function renderPage(type = "home", data = {}) {
         });
       })();
       
-      createTaskChartComponent("Doughunt");        
+          
       
       document.getElementById("play-sound").addEventListener("click", function () {
         const audio = document.getElementById("soothing-sound");
