@@ -6,11 +6,12 @@ export function renderPage(type = "home", data = {}) {
   
     if (type === "home") {
       app.innerHTML = `
-        <div class="header">
+       <!-- <div class="header">
                 <div class="left-header"><img src="./logo.jpg" alt="" height="100px" width="100px"></div>
                 <div class="right-header">
                 </div>
-            </div>
+            </div> -->
+        
         
         <h1 class="Mainheading">Welcome to Stress-Less - Micro Self-Care Assistant</h1>
         <div style="background-image: url('https://png.pngtree.com/png-clipart/20230927/original/pngtree-mental-health-meditation-illustration-png-image_13147790.png'); 
@@ -59,7 +60,7 @@ export function renderPage(type = "home", data = {}) {
        ${ASMR ? `
                 <h3><i class="fa-brands fa-youtube"></i>  Try Chalk Crush YouTube Video</h3>
                 <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/jE7OtdqusPE?si=UXYXjy_TmMEsEXTu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                `:''}
+                `:' '}
     </div>` : '';
 
 
