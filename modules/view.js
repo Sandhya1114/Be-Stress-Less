@@ -43,7 +43,7 @@ export function renderPage(type = "home", data = {}) {
       const showQuote = true; // Always 
       const showSound = ["anxious", "tired"].includes(mood);
       const showBreathing = ["anxious", "stressed"].includes(mood);
-      const ASMR= [ "overwhelmed","stressed"].includes(mood);
+      const ASMR= [ "overwhelmed","tired"].includes(mood);
     
       // app.innerHTML = `
       //   <section id="suggestion-section" class="visible">
@@ -137,7 +137,7 @@ export function renderPage(type = "home", data = {}) {
                 `:''}
     </div>` : '';
 
-    
+
   const quoteBox = showQuote ? `
     <div class="suggestion-box">
       <div id="quote">${data.text}</div>
