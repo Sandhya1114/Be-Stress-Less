@@ -6,13 +6,13 @@ export function renderPage(type = "home", data = {}) {
   
     if (type === "home") {
       app.innerHTML = `
-       <!-- <div class="header">
-                <div class="left-header"><img src="./logo.jpg" alt="" height="100px" width="100px"></div>
-                <div class="right-header">
-                </div>
-            </div> -->
+        <div class="header">
+                 
+                <div class="left-header"><img src="./logoss.png" alt="" height="60px" width="200px"></div>
+                <div class="right-header"><button class="getHelp" >Get Help</button></div>
+            </div> 
         
-        
+        <!--  -->
         <h1 class="Mainheading">Welcome to Stress-Less - Micro Self-Care Assistant</h1>
         <div style="background-image: url('https://png.pngtree.com/png-clipart/20230927/original/pngtree-mental-health-meditation-illustration-png-image_13147790.png'); 
             background-size: contain; 
@@ -26,10 +26,10 @@ export function renderPage(type = "home", data = {}) {
         <section id="mood-section" class="visible">
           <h1 clss="bothering"> how’s your inner sunshine?</h1>
           <div class="emoji-picker">
-            <button class="mood" data-mood="stressed">😣<span> Stressed</span></button>
-            <button class="mood" data-mood="anxious">😰<span> Anxious</span></button>
-            <button class="mood" data-mood="tired">😴<span> Tired</span></button>
-            <button class="mood" data-mood="overwhelmed">🌟<span> Joyful</span></button>
+            <button class="mood" data-mood="stressed"><img src="https://static.vecteezy.com/system/resources/previews/043/957/596/large_2x/painful-expression-trendy-icon-of-pain-emoji-editable-vector.jpg" alt="" height="70px" width="70px"><p><span> Stressed</span></p></button>
+            <button class="mood" data-mood="anxious"><img src="https://static.vecteezy.com/system/resources/previews/043/957/610/large_2x/get-your-hands-on-perfectly-designed-sad-emoji-icon-customizable-vector.jpg" alt="" width="70px" height="70px"><p><span> Anxious</span></p></button>
+            <button class="mood" data-mood="tired"> <img src="https://img.freepik.com/premium-vector/unique-premium-vector-tired-emoji-editable-icon_142112-2467.jpg" alt="" height="70px" width="70px"><p><span> Tired</span></p></button>
+            <button class="mood" data-mood="overwhelmed"> <img src="https://static.vecteezy.com/system/resources/thumbnails/043/957/576/small_2x/enthusiastic-emoji-icon-happy-face-design-vector.jpg" alt="" width="70px" height="70px"><p><span> Joyful</span></p></button>
           </div>
         </section>
       `;

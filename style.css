@@ -32,6 +32,8 @@
   border: 1px solid rgb(191, 210, 255);
   border-radius: 20px;
   padding:7px 2px 2px 10px;
+  background-color: #C6C2FE;
+  background: linear-gradient(90deg, #C6C2FE  0%, #C6C2FE 10%, rgba(191, 186, 255, 1) 30%, rgba(235, 190, 246, 1) 56%, rgba(242, 204, 254, 1) 100%);
 }
 
 .left-header {
@@ -43,7 +45,9 @@
   
 }
 .left-header img{
-  border-radius: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+
 }
 
 .header a {
@@ -140,23 +144,40 @@ section:not(.hidden) {
   flex-wrap: wrap;
   gap: 1rem;
 }
-
+.getHelp{
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid rgb(191, 210, 255);
+  transition: background-color 0.3s ease;
+  background-color: var(--gradient-purple);
+}
 .mood {
   font-size: 2rem;
-  background: white;
+  background: var(--gradient-pink-light);
   border: none;
   padding: 1rem;
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.2s ease;
   /* background: linear-gradient(135deg, #a8edea, #fed6e3); */
+  width: 200px;
+  border: 1px solid white;
   
 }
 
 .mood:hover {
   transform: scale(1.1);
 }
-
+.emoji-picker img{
+  border-radius: 30px;
+  border: 1px solid white;
+}
+.emoji-picker span{
+  margin-bottom: 40px;
+}
 #suggestion-section{
   margin-top: 0;
  
@@ -603,7 +624,15 @@ section:not(.hidden) {
     height: auto;
     padding: 10px;
   }
-
+  .header{
+    background-color: #C6C2FE;
+    background: linear-gradient(90deg, #C6C2FE  0%, #C6C2FE 10%, #C6C2FE 30%, #C6C2FE 56%, rgba(242, 204, 254, 1) 100%);
+  }
+  .left-header img{
+    width: 150px;
+    height: 50px;
+  }
+  
   .left .logo {
     font-size: 1.2rem;
     text-align: center;
@@ -626,13 +655,16 @@ section:not(.hidden) {
   .mood {
     font-size: 1.2rem;
     padding: 0.6rem;
+    width: 130px;
+    
+  
   }
 
   .emoji-picker {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 1.5rem;
   }
 
   .suggestion-box,
