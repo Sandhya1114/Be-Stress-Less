@@ -42,8 +42,8 @@ export function renderPage(type = "home", data = {}) {
       const showSpotify = ["tired", "overwhelmed", "anxious", "stressed"].includes(mood);
       const showYoutube = ["tired", "overwhelmed", "anxious", "stressed"].includes(mood);
       const showQuote = true; // Always 
-      const showSound = ["anxious", "tired"].includes(mood);
-      const showBreathing = ["anxious", "stressed","tired"].includes(mood);
+      const showSound = ["anxious","stressed"].includes(mood);
+      const showBreathing = ["anxious"].includes(mood);
       const ASMR= [ "overwhelmed","tired"].includes(mood);
     
      
@@ -53,15 +53,15 @@ export function renderPage(type = "home", data = {}) {
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
       </div>` : '';
 
-  const youtubeEmbed = showYoutube ? `
-    <div>
-      <h3><i class="fa-brands fa-youtube"></i> YouTube</h3>
-      <iframe style="border-radius:12px" width="100%" height="515" src="https://www.youtube.com/embed/${data.youtube}" frameborder="0" allowfullscreen></iframe>
-       ${ASMR ? `
-                <h3><i class="fa-brands fa-youtube"></i>  Try Chalk Crush YouTube Video</h3>
-                <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/jE7OtdqusPE?si=UXYXjy_TmMEsEXTu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                `:' '}
-    </div>` : '';
+      const youtubeEmbed = showYoutube ? `
+        <div>
+          <h3><i class="fa-brands fa-youtube"></i> YouTube</h3>
+          <iframe style="border-radius:12px" width="100%" height="515" src="https://www.youtube.com/embed/${data.youtube}" frameborder="0" allowfullscreen></iframe>
+          ${ASMR ? `
+                    <h3><i class="fa-brands fa-youtube"></i>  Try Chalk Crush YouTube Video</h3>
+                    <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/jE7OtdqusPE?si=UXYXjy_TmMEsEXTu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    `:' '}
+        </div>` : '';
 
 
   const quoteBox = showQuote ? `
