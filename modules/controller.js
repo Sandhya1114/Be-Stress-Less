@@ -10,6 +10,7 @@ export function handleMoodClick(mood) {
     })
     .catch((err) => console.error("Fetch error:", err));
 }
+
 export function fetchNewQuote(mood) {
   fetch(`/api/mood/${mood}`)
     .then((res) => res.json())

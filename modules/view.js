@@ -39,18 +39,22 @@ export function renderPage(type = "home", data = {}) {
     if (type === "suggestion") {
       const mood = data.mood;
     
-      const showSpotify = ["tired", "overwhelmed", "anxious", "stressed"].includes(mood);
+      const showSpotify = ["tired", "overwhelmed"].includes(mood);
       const showYoutube = ["tired", "overwhelmed", "anxious", "stressed"].includes(mood);
-      const showQuote = true; // Always 
-      const showSound = ["anxious","stressed"].includes(mood);
+      const showQuote = ["anxious"].includes(mood);
+
+      const showSound = ["stressed"].includes(mood);
       const showBreathing = ["anxious"].includes(mood);
-      const ASMR= [ "overwhelmed","tired"].includes(mood);
+      const ASMR= [ "overwhelmed"].includes(mood);
+      const tiredd=["tired"].includes(mood);
     
      
       const spotifyEmbed = showSpotify ? `
       <div style="margin-bottom: 1rem;">
         <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
+        ${tiredd?`<iframe  style="border-radius:12px"width="100%" height="552" src="https://www.youtube.com/embed/3LziNDk4kng?si=W7ZOliLxhfIf3kRX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`:''}
+        
       </div>` : '';
 
       const youtubeEmbed = showYoutube ? `
@@ -68,9 +72,16 @@ export function renderPage(type = "home", data = {}) {
     <div class="suggestion-box">
       <div id="quote">${data.text}</div>
       <button id="new-quote-btn" class="new-quote-btn">Show Another Quote</button>
-    </div>` : '';
+    </div>` : ' ';
 
   const soundBox = showSound ? `
+    
+    <div class="imgesYoga">
+      <img src="https://i.pinimg.com/originals/cc/06/37/cc0637bc42a1e0a27b074691abaeb088.jpg" alt="" height="350px" width="300px">
+      <img src=" https://i.pinimg.com/originals/94/32/c7/9432c74b25ed3f46636482022f5ead95.jpg" alt="" height="350px" width="300px">
+      <img src="https://i.pinimg.com/originals/f2/17/94/f21794b4cf939a1314cfa222b5890e17.jpg" alt="" height="350px" width="300px">
+    </div>
+     <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/5jca-sWgemI?si=S7rex7hv-Ixvbz_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div class="soothing-sound-box">
       <h2 class="sound-title">Soothing Nature Sounds</h2>
       <p class="sound-description">Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.</p>
@@ -122,131 +133,125 @@ export function renderPage(type = "home", data = {}) {
     </section>
   `;
     createTaskChartComponent("Doughunt");    
-      (function () {
-        const component = document.getElementById('breathing-component');
-        const innerCircle = component.querySelector('.inner-circle');
-        const instruction = component.querySelector('.instruction');
-        const centerText = component.querySelector('.center-text'); 
-        const timerDisplay = component.querySelector('.timer');
-      
-        const pattern = [
-          { text: 'Inhale', scale: 1, duration: 6000 },
-          { text: 'Hold', scale: 1, duration: 4000 },
-          { text: 'Exhale', scale: 0.4, duration: 7000 }
-        ];
-      
-        let timeoutIds = [];
-        let timerInterval;
-        let sessionTime = 60; 
-        let phaseCountdownId;
-      
-        function updateTimerDisplay(time) {
-          timerDisplay.textContent = `Time Left: ${time}s`;
-        }
-      
-        // Run through each phase (Inhale, Hold, Exhale)
-        function runPhase(index = 0) {
-          const phase = pattern[index];
-          const seconds = phase.duration / 1000;
-          let count = seconds;
-      
-          // Update circle size (animation)
-          innerCircle.style.transitionDuration = `${seconds}s`;
-          innerCircle.style.transform = `scale(${phase.scale})`;
-      
-          // Show the text in the center
-          centerText.style.display = 'block';
-          centerText.textContent = `${phase.text}: ${count}`;
-      
-          // Per-second countdown text
-          phaseCountdownId = setInterval(() => {
-            count--;
-            if (count > 0) {
-              centerText.textContent = `${phase.text}: ${count}`;
-            } else {
-              clearInterval(phaseCountdownId);
-              // Move to next phase or restart pattern
-              const nextIndex = (index + 1) % pattern.length;
-              runPhase(nextIndex);
-            }
-          }, 1000);
-        }
-        
-        // Start the breathing exercise
-        function startBreathing() {
-          sessionTime = 60;
-          updateTimerDisplay(sessionTime);
-          component.querySelector('.start-btn').style.display = 'none';
-          component.querySelector('.restart-btn').style.display = 'inline-block';
-      
-          // Initially hide the center text and reset circle size
-          centerText.style.display = 'none'; 
-          innerCircle.style.transform = 'scale(0.4)'; 
-      
-          // Start breathing after a small delay
-          setTimeout(() => {
-            runPhase();
-          }, 1000);
-      
-          // Global session timer
-          timerInterval = setInterval(() => {
-            sessionTime--;
-            updateTimerDisplay(sessionTime);
-            if (sessionTime <= 0) {
-              stopBreathing();
-            }
-          }, 1000);
-        }
-      
-        // Stop the breathing exercise
-        function stopBreathing() {
-          timeoutIds.forEach(clearTimeout);
-          clearInterval(timerInterval);
-          clearInterval(phaseCountdownId);
-          instruction.textContent = 'Session Complete';
-          timerDisplay.textContent = 'Time Left: 0s';
-          innerCircle.style.transitionDuration = '0.3s';
-          innerCircle.style.transform = 'scale(0.4)';
-          centerText.style.display = 'none';
-          component.querySelector('.start-btn').style.display = 'inline-block';
-          component.querySelector('.restart-btn').style.display = 'none';
-        }
-      
-        // Restart the breathing exercise
-        function restartBreathing() {
-          stopBreathing();
-          instruction.textContent = 'Click Start';
-          timerDisplay.textContent = 'Time Left: 60s';
-          centerText.style.display = 'none'; 
-          innerCircle.style.transform = 'scale(0.4)'; 
-        }
-      
-        // Event Delegation
-        component.addEventListener('click', (e) => {
-          if (e.target.matches('.start-btn')) {
-            startBreathing();
-          } else if (e.target.matches('.restart-btn')) {
-            restartBreathing();
-          }
-        });
-      })();
-      
-          
-      
-      document.getElementById("play-sound").addEventListener("click", function () {
-        const audio = document.getElementById("soothing-sound");
-        if (audio) audio.play();
-      });
-      
-      document.getElementById("new-quote-btn").addEventListener("click", function () {
-        fetchNewQuote(data.mood);
-      });
+     // Attach only if component exists
+const breathingComponent = document.getElementById('breathing-component');
+if (breathingComponent) {
+  (function () {
+    const innerCircle = breathingComponent.querySelector('.inner-circle');
+    const instruction = breathingComponent.querySelector('.instruction');
+    const centerText = breathingComponent.querySelector('.center-text'); 
+    const timerDisplay = breathingComponent.querySelector('.timer');
 
-      document.querySelector(".feedback").addEventListener("click", (e) => {
-        if (e.target.tagName === "BUTTON") {
-          handleFeedback(e.target.id);
+    const pattern = [
+      { text: 'Inhale', scale: 1, duration: 6000 },
+      { text: 'Hold', scale: 1, duration: 4000 },
+      { text: 'Exhale', scale: 0.4, duration: 7000 }
+    ];
+
+    let timeoutIds = [];
+    let timerInterval;
+    let sessionTime = 60; 
+    let phaseCountdownId;
+
+    function updateTimerDisplay(time) {
+      timerDisplay.textContent = `Time Left: ${time}s`;
+    }
+
+    function runPhase(index = 0) {
+      const phase = pattern[index];
+      const seconds = phase.duration / 1000;
+      let count = seconds;
+
+      innerCircle.style.transitionDuration = `${seconds}s`;
+      innerCircle.style.transform = `scale(${phase.scale})`;
+
+      centerText.style.display = 'block';
+      centerText.textContent = `${phase.text}: ${count}`;
+
+      phaseCountdownId = setInterval(() => {
+        count--;
+        if (count > 0) {
+          centerText.textContent = `${phase.text}: ${count}`;
+        } else {
+          clearInterval(phaseCountdownId);
+          runPhase((index + 1) % pattern.length);
         }
-      });
+      }, 1000);
+    }
+
+    function startBreathing() {
+      sessionTime = 60;
+      updateTimerDisplay(sessionTime);
+      breathingComponent.querySelector('.start-btn').style.display = 'none';
+      breathingComponent.querySelector('.restart-btn').style.display = 'inline-block';
+
+      centerText.style.display = 'none'; 
+      innerCircle.style.transform = 'scale(0.4)'; 
+
+      setTimeout(() => runPhase(), 1000);
+
+      timerInterval = setInterval(() => {
+        sessionTime--;
+        updateTimerDisplay(sessionTime);
+        if (sessionTime <= 0) stopBreathing();
+      }, 1000);
+    }
+
+    function stopBreathing() {
+      timeoutIds.forEach(clearTimeout);
+      clearInterval(timerInterval);
+      clearInterval(phaseCountdownId);
+      instruction.textContent = 'Session Complete';
+      timerDisplay.textContent = 'Time Left: 0s';
+      innerCircle.style.transitionDuration = '0.3s';
+      innerCircle.style.transform = 'scale(0.4)';
+      centerText.style.display = 'none';
+      breathingComponent.querySelector('.start-btn').style.display = 'inline-block';
+      breathingComponent.querySelector('.restart-btn').style.display = 'none';
+    }
+
+    function restartBreathing() {
+      stopBreathing();
+      instruction.textContent = 'Click Start';
+      timerDisplay.textContent = 'Time Left: 60s';
+      centerText.style.display = 'none'; 
+      innerCircle.style.transform = 'scale(0.4)'; 
+    }
+
+    breathingComponent.addEventListener('click', (e) => {
+      if (e.target.matches('.start-btn')) startBreathing();
+      if (e.target.matches('.restart-btn')) restartBreathing();
+    });
+  })();
+}
+
+// Safe check before adding quote listener
+const quoteBtn = document.getElementById("new-quote-btn");
+if (quoteBtn) {
+  quoteBtn.addEventListener("click", function () {
+    fetchNewQuote(data.mood);
+  });
+}
+
+// Safe check before adding audio play listener
+const soundBtn = document.getElementById("play-sound");
+if (soundBtn) {
+  soundBtn.addEventListener("click", function () {
+    const audio = document.getElementById("soothing-sound");
+    if (audio) audio.play();
+  });
+}
+
+// Safe check for feedback section
+const feedbackContainer = document.querySelector(".feedback");
+if (feedbackContainer) {
+  feedbackContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") {
+      handleFeedback(e.target.id);
+    }
+  });
+}
+
 
   
       function handleFeedback(type) {

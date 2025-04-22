@@ -25,13 +25,13 @@ export  function startMirageServer() {
             spotify: "playlist/1dD2RAirtwoQQwno1mglZH?utm_source=generator",
             youtube: "jh2LJVDtGIY?si=RSk-P0uUgBJhGW1y",
             text:getRandomQuote("stressed"),
-            audio: "/audioSounds/avala-mountain-scenery-245994.mp3"
+            audio: "/audioSounds/raindrop-146855.mp3"
           },
           anxious: {
             spotify: "playlist/0cj48sijCRDJ3Hatx1k1vJ?utm_source=generator",
-            youtube: "oS6KlpzDNS0?si=ppK-rsctWanBtq4K",
+            youtube: "6RN-61BLwRo?si=I2QYZV-Z_4SnKDCc",
             text:getRandomQuote("anxious"),
-            audio: "/audioSounds/birds-chirping-75156.mp3"
+            audio: "/audioSounds/carp-shaped-streamer-japanese-song-328698.mp3"
           },
           tired: {
             spotify: "album/2d6cNiDXbrKdFcn8ujJxo3?utm_source=generator",

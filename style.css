@@ -200,11 +200,18 @@ section:not(.hidden) {
 }
 
 #back-btn{
+ 
   position: absolute;
   top: 30px;
   left: 170px;
-  border-radius: 10px;
+  background:none;
+  border: none;
   padding: 10px;
+  
+}
+#back-btn i {
+  font-size: 24px;
+  text-shadow: 1px 0 black, -1px 0 black, 0 1px black, 0 -1px black;
 }
 #suggestion-section{
   margin-top: 0;
@@ -568,6 +575,19 @@ section:not(.hidden) {
 
 }
 
+
+/* imges yoga */
+.imgesYoga{
+  margin: 4vh 0;
+  background-color: var(--gradient-pink);
+  border-radius: 10px;
+  padding: 20px;
+}
+.imgesYoga img{
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
 /* Responsive for tablets (portrait & small laptops) */
 @media (max-width: 1024px) {
   .mainContainer {
@@ -721,6 +741,10 @@ section:not(.hidden) {
   }
   .feedback {
     margin-top: 4vh;
+  }
+  .imgesYoga img{
+   width: 340px;
+   margin: auto;
   }
   
 }
