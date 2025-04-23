@@ -47,6 +47,7 @@ export function renderPage(type = "home", data = {}) {
       const showBreathing = ["anxious"].includes(mood);
       const ASMR= [ "overwhelmed"].includes(mood);
       const tiredd=["tired"].includes(mood);
+      const Doughuntt= [ "overwhelmed"].includes(mood);
     
      
       const spotifyEmbed = showSpotify ? `
@@ -123,7 +124,7 @@ export function renderPage(type = "home", data = {}) {
         ${breathingBox}
       </div>
 
-      <div id="Doughunt"></div>
+      ${Doughuntt?`<div id="Doughunt"></div>`:''}
 
       <div class="feedback">
         <h1><i class="fa-solid fa-comments"></i> Give your feedback</h1>
@@ -132,7 +133,7 @@ export function renderPage(type = "home", data = {}) {
       </div>
     </section>
   `;
-    createTaskChartComponent("Doughunt");    
+   
      // Attach only if component exists
 const breathingComponent = document.getElementById('breathing-component');
 if (breathingComponent) {
@@ -245,6 +246,7 @@ if (soundBtn) {
 // Safe check for feedback section
 const feedbackContainer = document.querySelector(".feedback");
 if (feedbackContainer) {
+  createTaskChartComponent("Doughunt");    
   feedbackContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
       handleFeedback(e.target.id);
