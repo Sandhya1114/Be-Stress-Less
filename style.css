@@ -401,7 +401,7 @@ section:not(.hidden) {
 }
 
 .play-sound-btn:hover {
-  background-color: #EFC4FC;
+  background-color: var(--primary-text);
 }
 #breathing-component .breath-container {
   text-align: center;
