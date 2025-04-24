@@ -83,7 +83,7 @@ export function renderPage(type = "home", data = {}) {
       <div style="margin-bottom: 1rem;">
         <h3><i class="fa-solid fa-music"></i> Try Spotify <i class="fa-brands fa-spotify"></i></h3>
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/${data.spotify}" width="100%" height="552" frameBorder="0" allowfullscreen loading="lazy"></iframe>
-        ${tiredd?`<iframe  style="border-radius:12px" width="100%" height="552" src="https://www.youtube.com/embed/3LziNDk4kng?si=W7ZOliLxhfIf3kRX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`:''}
+        ${tiredd?`<iframe class="tired" style="border-radius:12px" margin-top="20px" width="100%" height="552" src="https://www.youtube.com/embed/3LziNDk4kng?si=W7ZOliLxhfIf3kRX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`:''}
         
       </div>` : '';
 

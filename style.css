@@ -522,7 +522,9 @@ section:not(.hidden) {
   padding-left: 0;
   margin-top: 1rem;
 }
-
+.tired{
+  margin-top: 21px;
+}
 #task-list li {
   color: var(--primary-text);;
   display: flex;
@@ -760,7 +762,7 @@ section:not(.hidden) {
   }
 
   .LoveYourSelf {
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 0 10px;
   }
 
