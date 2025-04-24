@@ -7,9 +7,21 @@ export function renderPage(type = "home", data = {}) {
     if (type === "home") {
       app.innerHTML = `
         <div class="header">
-                 
+                 <!-- <div class="right-header"><button class="getHelp" >Get Help</button></div>  --> 
                 <div class="left-header"><img src="./logoss.png" alt="" height="60px" width="200px"></div>
-                <div class="right-header"><button class="getHelp" >Get Help</button></div>
+               
+                <div class="right-header">
+                    <button class="getHelp">Get Help</button>
+                </div>
+
+                <!-- Modal -->
+                <div id="helpModal" class="modal">
+                  <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Click on any mood button to help improve your mood 😊</p>
+                  </div>
+                </div>
+
             </div> 
         
         <!--  -->
@@ -19,7 +31,7 @@ export function renderPage(type = "home", data = {}) {
             background-repeat: no-repeat; 
             background-position: center; 
             width: 100%; 
-            height: 382px;}">
+            height: 300px;}">
         </div>
 
 
@@ -33,6 +45,23 @@ export function renderPage(type = "home", data = {}) {
           </div>
         </section>
       `;
+      const modal = document.getElementById("helpModal");
+      const btn = document.querySelector(".getHelp");
+      const span = document.querySelector(".close");
+
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
+
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      }
       
     }
   
@@ -82,7 +111,7 @@ export function renderPage(type = "home", data = {}) {
       <img src=" https://i.pinimg.com/originals/48/5a/2d/485a2dafc3f90f67293b3e0677430335.jpg" alt="" height="350px" width="300px">
       <img src="https://i.pinimg.com/originals/f2/17/94/f21794b4cf939a1314cfa222b5890e17.jpg" alt="" height="350px" width="300px">
     </div>
-     <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/5jca-sWgemI?si=S7rex7hv-Ixvbz_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/5jca-sWgemI?si=S7rex7hv-Ixvbz_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div class="soothing-sound-box">
       <h2 class="sound-title">Soothing Nature Sounds</h2>
       <p class="sound-description">Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.</p>
@@ -255,7 +284,7 @@ if (feedbackContainer) {
 }
 
 
-  
+
       function handleFeedback(type) {
         const feedbackContainer = document.querySelector(".feedback");
         const message =
