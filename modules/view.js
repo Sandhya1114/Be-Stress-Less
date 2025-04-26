@@ -205,7 +205,7 @@ export function renderPage(type = "home", data = {}) {
            container.style.margin = "15px 0";
    
            const label = document.createElement("label");
-           label.innerText = `${name} Volume: `;
+           label.innerText = `${name} Sound: `;
            label.style.marginRight = "10px";
            label.style.fontWeight = "bold";
    
