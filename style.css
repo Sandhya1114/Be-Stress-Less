@@ -620,6 +620,60 @@ section:not(.hidden) {
   cursor: pointer;
 }
 
+
+
+.audio-control {
+  margin: 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audio-label {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.volume-slider {
+  width: 200px;
+  cursor: pointer;
+}
+
+.stop-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--primary-text);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.stop-button:hover {
+  background-color: var(--primary-text);
+}
+/* Style the track */
+
+
+
+
+
+/* Style the thumb */
+
+
+/* Firefox */
+
+
+input[type="range"]::-moz-range-thumb {
+  
+  background: #fff;
+  border: 2px solid #4CAF50;
+  
+}
+
+
 /* Responsive for tablets (portrait & small laptops) */
 @media (max-width: 1024px) {
   .mainContainer {

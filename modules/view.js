@@ -112,6 +112,7 @@ export function renderPage(type = "home", data = {}) {
       <img src="https://i.pinimg.com/originals/f2/17/94/f21794b4cf939a1314cfa222b5890e17.jpg" alt="" height="350px" width="300px">
     </div>
     <iframe style="border-radius:12px" padding-top="20px" margin-top="20px" width="100%" height="515" src="https://www.youtube.com/embed/5jca-sWgemI?si=S7rex7hv-Ixvbz_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <!--  
     <div class="soothing-sound-box">
       <h2 class="sound-title">Soothing Nature Sounds</h2>
       <p class="sound-description">Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.</p>
@@ -121,7 +122,19 @@ export function renderPage(type = "home", data = {}) {
       </audio>
       <br>
       <button id="play-sound" class="play-sound-btn">Play Sound</button>
-    </div>` : '';
+    </div>-->
+     <div class="sound-control-section soothing-sound-box">
+    <h2 class="sound-title">Mix Your Soothing Sounds 🎵</h2>
+    <p class="sound-description">Let the calming sounds of nature relax your mind. Listen to the sounds of birds, rain, or the wind to feel more peaceful.</p>
+    <button id="start-all-sounds" class="play-sound-btn">Start All Sounds</button>
+     <button id="stop-all-sounds" class="stop-sound-btn play-sound-btn">Stop All Sounds</button>
+    <div id="audio-controls"></div> 
+    </div>
+    
+    
+    `
+    
+    : '';
 
   const breathingBox = showBreathing ? `
     <div id="breathing-component">
@@ -162,7 +175,68 @@ export function renderPage(type = "home", data = {}) {
       </div>
     </section>
   `;
+   // Safe check and create audio controllers
+   const startSoundsBtn = document.getElementById("start-all-sounds");
+   const stopSoundsBtn = document.getElementById("stop-all-sounds"); // added stop button
    
+   let audioElements = []; // moved outside
+   
+   if (startSoundsBtn) {
+     const audioSources = [
+       { name: "Rain", url: "/audioSounds/raindrop-146855.mp3",Img:'' },
+       { name: "Birds", url: "/audioSounds/forestNature.mp3" },
+       { name: "Waterfall", url: "/audioSounds/waterfalls.mp3" },
+       { name: "Wind", url: "/audioSounds/highWind.mp3" },
+       { name: "Thunder", url: "/audioSounds/thunder-strike-wav.mp3" }
+     ];
+   
+     const controlsContainer = document.getElementById("audio-controls");
+   
+     startSoundsBtn.addEventListener("click", () => {
+       if (audioElements.length === 0) {
+         audioSources.forEach(({ name, url }) => {
+           const audio = new Audio(url);
+           audio.loop = true;
+           audio.volume = 0.5;
+           audio.play();
+           audioElements.push(audio);
+   
+           const container = document.createElement("div");
+           container.style.margin = "15px 0";
+   
+           const label = document.createElement("label");
+           label.innerText = `${name} Volume: `;
+           label.style.marginRight = "10px";
+           label.style.fontWeight = "bold";
+   
+           const slider = document.createElement("input");
+           slider.type = "range";
+           slider.min = 0;
+           slider.max = 1;
+           slider.step = 0.01;
+           slider.value = 0.5;
+           slider.style.width = "200px";
+   
+           slider.addEventListener("input", (e) => {
+             audio.volume = e.target.value;
+           });
+   
+           container.appendChild(label);
+           container.appendChild(slider);
+           controlsContainer.appendChild(container);
+         });
+       } else {
+         audioElements.forEach(audio => audio.play());
+       }
+     });
+   
+     // ADD stop functionality
+     stopSoundsBtn.addEventListener("click", () => {
+       audioElements.forEach(audio => audio.pause());
+     });
+   }
+   
+
      // Attach only if component exists
 const breathingComponent = document.getElementById('breathing-component');
 if (breathingComponent) {
